@@ -1,0 +1,45 @@
+syntax ="proto3";
+package booking;
+option go_package ="./;pb";
+
+service CustomerService{
+    rpc CreateCustomer(Customer) returns (Customer);
+    rpc UpdateCustomer(Customer) returns (Customer);
+    rpc ChangePassword(ChangePasswordRequest) returns (MessageChangePassword);
+    rpc BookingHistory(FindCustomerRequest) returns (Customer);
+    rpc FindCustomer (FindRequest) returns (FindResponse);
+}
+
+message Customer{
+    int64 Id=1;
+    string CustomerName=2;
+    string Address=3;
+    string Phone=4;
+    string License=5;
+    bool Active=6;
+    string Email=7;
+    string Password=8;
+}
+
+message FindCustomerRequest{
+    int64 Id=1;
+}
+message ChangePasswordRequest {
+    int64 Id=1;
+    string Old_password = 2;
+    string New_password = 3;
+    string Confirm_password = 4;
+}
+message FindRequest{
+    int64 Id = 1;
+}
+
+message FindResponse{
+    int64 Id = 1;
+    string Name = 2;
+    string Address = 3;
+    string Email = 4;
+}
+message MessageChangePassword{
+    string Message=1;
+}
