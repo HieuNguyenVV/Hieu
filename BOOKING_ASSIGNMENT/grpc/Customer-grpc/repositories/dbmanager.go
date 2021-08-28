@@ -52,9 +52,7 @@ func (m *dbmanager) CreateCustomer(ctx context.Context, model *models.Customer) 
 	return model, nil
 }
 func (m *dbmanager) UpdateCustomer(ctx context.Context, model *models.Customer) (*models.Customer, error) {
-	// if err := m.Where(&models.People{ID: model.ID}).Updates(&models.People{Name: model.Name, Slut: model.Slut}).Error; err != nil {
-	// 	return nil, err
-	// }
+
 	if err := m.Save(model).Error; err != nil {
 		return nil, err
 	}

@@ -41,7 +41,7 @@ func (m *dbmanager) GetFlightByID(context context.Context, id int64) (*models.Fl
 	if err := m.Where(&models.Flight{Id: id}).First(&flight).Error; err != nil {
 		return nil, err
 	}
-	//fmt.Println(people)
+
 	return &flight, nil
 }
 func (m *dbmanager) GetFlightsByFrom(ctx context.Context, from string) ([]*models.Flight, error) {
@@ -67,16 +67,10 @@ func (m *dbmanager) CreateFlight(ctx context.Context, model *models.Flight) (*mo
 	return model, nil
 }
 func (m *dbmanager) UpdateFlight(ctx context.Context, model *models.Flight) (*models.Flight, error) {
-	// if err := m.Where(&models.Flight{Id: model.Id}).Updates(&models.Flight{}).Error; err != nil {
-	// 	return nil, err
-	// }
+
 	if err := m.Save(model).Error; err != nil {
 		return nil, err
 	}
 
 	return model, nil
 }
-
-// UpdateFlight(ctx context.Context, model *models.Flight) (*models.Flight, error)
-// 	GetFlightByID(context context.Context, id uuid.UUID) (*models.Flight, error)
-// }

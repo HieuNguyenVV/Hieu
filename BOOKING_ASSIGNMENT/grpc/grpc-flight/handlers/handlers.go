@@ -126,7 +126,7 @@ func (h *FlightHandler) SearchFlight(ctx context.Context, in *pb.SearchFlightReq
 	return pResponse, nil
 }
 func (h *FlightHandler) FindFlight(ctx context.Context, in *pb.FindResquest) (*pb.Flight, error) {
-	customer, err := h.flightRepository.GetFlightByID(ctx, in.Id)
+	flight, err := h.flightRepository.GetFlightByID(ctx, in.Id)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return nil, status.Error(codes.NotFound, err.Error())
@@ -136,7 +136,7 @@ func (h *FlightHandler) FindFlight(ctx context.Context, in *pb.FindResquest) (*p
 	}
 
 	cRes := pb.Flight{}
-	err = copier.Copy(&cRes, &customer)
+	err = copier.Copy(&cRes, &flight)
 	if err != nil {
 		return nil, err
 	}
