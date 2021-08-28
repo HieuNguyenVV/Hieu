@@ -3,12 +3,12 @@ package responses
 import "time"
 
 type CreateBookingResponses struct {
-	Id           int64 `json:"id"`
-	Booking_code int64 `json:"code"`
-	Booking_date time.Time
-	Customer_id  int64  `json:"customer_id"`
-	Flight_id    int64  `json:"flight_id"`
-	Status       string `json:"status" binding:"required"`
+	Id           int64     `json:"id"`
+	Booking_code int64     `json:"code"`
+	Booking_date time.Time `json:"date"`
+	Customer_id  int64     `json:"customer_id"`
+	Flight_id    int64     `json:"flight_id"`
+	Status       string    `json:"status" binding:"required"`
 }
 type ViewResponse struct {
 	Booking_code int64 `json:"code"`
@@ -37,11 +37,11 @@ type Flight struct {
 }
 
 type Cancel struct {
-	Id           int64 `json:"id"`
-	Booking_code int64 `json:"code"`
-	Booking_date time.Time
-	Cancel_date  time.Time
-	Customer_id  int64  `json:"customer_id"`
-	Flight_id    int64  `json:"flight_id"`
-	Status       string `json:"status" binding:"required"`
+	Id           int64     `json:"id"`
+	Booking_code int64     `json:"code"`
+	Booking_date time.Time `json:"booking_date"`
+	Cancel_date  time.Time `json:"cancel_date"`
+	Customer_id  int64     `json:"customer_id"`
+	Flight_id    int64     `json:"flight_id"`
+	Status       string    `json:"status" binding:"required"`
 }

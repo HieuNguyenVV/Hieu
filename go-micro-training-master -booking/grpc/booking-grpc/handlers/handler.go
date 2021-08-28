@@ -3,7 +3,6 @@ package handlers
 import (
 	"context"
 	"database/sql"
-	"fmt"
 	"gin-training/grpc/booking-grpc/models"
 	"gin-training/grpc/booking-grpc/repositories"
 	"gin-training/pb"
@@ -34,7 +33,7 @@ func NewBookingHandler(customerClient pb.CustomerServiceClient,
 }
 
 func (h *BookingHandler) Booking(ctx context.Context, in *pb.Info) (*pb.Info, error) {
-	fmt.Println("dgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 	if in.CustomerId == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Customer_id is required")
 	}
@@ -42,7 +41,7 @@ func (h *BookingHandler) Booking(ctx context.Context, in *pb.Info) (*pb.Info, er
 	if in.FlightId == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Fligh_id is required")
 	}
-	fmt.Println("dgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 	customer, err := h.customerClient.FindCustomer(ctx, &pb.FindRequest{
 		Id: in.CustomerId,
 	})
@@ -56,7 +55,7 @@ func (h *BookingHandler) Booking(ctx context.Context, in *pb.Info) (*pb.Info, er
 			return nil, err
 		}
 	}
-	fmt.Println("dgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 	flight, err := h.flightClient.FindFlight(ctx, &pb.FindResquest{
 		Id: in.FlightId,
 	})
@@ -70,7 +69,7 @@ func (h *BookingHandler) Booking(ctx context.Context, in *pb.Info) (*pb.Info, er
 			return nil, err
 		}
 	}
-	fmt.Println("dgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 	booking := &models.Booking{
 		Id:          in.Id,
 		BookingCode: in.BookingCode,
@@ -82,12 +81,12 @@ func (h *BookingHandler) Booking(ctx context.Context, in *pb.Info) (*pb.Info, er
 		UpdatedAt:   time.Time{},
 		DeletedAt:   gorm.DeletedAt{},
 	}
-	fmt.Println("dgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 	res, err := h.bookingRepository.Booking(ctx, booking)
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("dgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 	pRes := &pb.Info{}
 	err = copier.Copy(&pRes, &res)
 	if err != nil {
@@ -118,7 +117,7 @@ func (h *BookingHandler) ViewBooking(ctx context.Context, in *pb.ViewRequest) (*
 			return nil, err
 		}
 	}
-	fmt.Println("dgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 	flight, err := h.flightClient.FindFlight(ctx, &pb.FindResquest{
 		Id: booking.FlightId,
 	})
