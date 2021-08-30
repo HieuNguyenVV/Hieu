@@ -26,7 +26,7 @@ func main() {
 	//Create routes
 	gr := g.Group("/v1/api")
 	gr.POST("/create", h.CreateCustomer)
-	gr.PUT("/update", h.CreateCustomer)
+	gr.PUT("/update", h.UpdateCustomer)
 	gr.PUT("/changePassword", h.ChangePassword)
 	//gr.POST("/Find", h.FindPeople)
 	//Listen and serve

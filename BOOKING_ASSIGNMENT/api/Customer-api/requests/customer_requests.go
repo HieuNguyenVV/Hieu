@@ -11,8 +11,8 @@ type CreateCustomerRequest struct {
 	Email        string `json:"email"binding:"max=256,min=6"`
 }
 type CreateCustomerRequestChangPassword struct {
-	Id               int64  `json:"id"`
-	Old_password     string `json:"old_password" binding:"required"`
-	New_password     string `json:"new_password" binding:"required"`
-	Confirm_password string `json:"confirm_password" binding:"required"`
+	Id              int64  `json:"id"`
+	Oldpassword     string `json:"oldpassword" `
+	Newpassword     string `json:"newpassword" `
+	Confirmpassword string `json:"confirmpassword"`
 }

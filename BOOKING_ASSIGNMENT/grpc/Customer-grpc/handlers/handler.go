@@ -112,14 +112,14 @@ func (h *CustomerHandler) ChangePassword(ctx context.Context, in *pb.ChangePassw
 		}
 		return nil, err
 	}
-	if in.OldPassword != customer.Password {
+	if in.Oldpassword != customer.Password {
 		return nil, status.Error(codes.PermissionDenied, "Your old password is incorrect")
 	}
 
-	if in.NewPassword != in.ConfirmPassword {
+	if in.Newpassword != in.Confirmpassword {
 		return nil, status.Error(codes.Canceled, "Makes sure your password match")
 	} else {
-		customer.Password = in.NewPassword
+		customer.Password = in.Newpassword
 	}
 
 	Message, err := h.customerRepository.ChangePassword(ctx, customer)

@@ -8,7 +8,7 @@ import (
 )
 
 type Customer struct {
-	Id           int64          `gorm:"primarykey"`
+	Id           int64          `gorm:"integer"`
 	CustomerName string         `gorm:"type:varchar(200);not null"`
 	Address      sql.NullString `gorm:"type:varchar(200)"`
 	License      string         `gorm:"type:varchar(20)"`

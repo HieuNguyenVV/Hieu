@@ -26,9 +26,9 @@ message FindCustomerRequest{
 }
 message ChangePasswordRequest {
     int64 Id=1;
-    string Old_password = 2;
-    string New_password = 3;
-    string Confirm_password = 4;
+    string Oldpassword = 2;
+    string Newpassword = 3;
+    string Confirmpassword = 4;
 }
 message FindRequest{
     int64 Id = 1;

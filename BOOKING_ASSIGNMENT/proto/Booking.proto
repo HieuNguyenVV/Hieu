@@ -14,7 +14,7 @@ service Bookings {
 
 message Info {
     int64 Id=1;
-    int64 Booking_code = 2;
+    int64 BookingCode = 2;
     google.protobuf.Timestamp Booking_date = 3;
     int64 Customer_id = 4;
     int64 Flight_id = 5;
@@ -23,20 +23,20 @@ message Info {
 }
 message Cancel{
     int64 Id=1;
-    int64 Booking_code = 2;
+    int64 BookingCode = 2;
     google.protobuf.Timestamp Booking_date = 3;
     google.protobuf.Timestamp Cancel_date = 4;
-    int64 Customer_id = 5;
-    int64 Flight_id = 6;
+    int64 CustomerId = 5;
+    int64 FlightId = 6;
     string Status = 7;
     
 }
 message ViewRequest {
-    int64 Booking_code = 1;
+    int64 BookingCode = 1;
 }
 
 message ViewResponse {
-    int64 Booking_code = 1;
+    int64 BookingCode = 1;
     google.protobuf.Timestamp Booking_date = 2;
     FindResponse  Customer = 3;
     Flight Flight = 4;
