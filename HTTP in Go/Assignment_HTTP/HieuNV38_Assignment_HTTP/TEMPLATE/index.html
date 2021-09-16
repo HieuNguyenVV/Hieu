@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <h3>Login</h3>
+        <form method="POST" action="/account/login">
+        Username<input type="text" name="username"/>
+        <br>
+        Password<input type="password" name="password">
+        <br>
+        {{.err}}
+        <br>
+        <input type="submit" value="Login">
+    </form>
+    <form method="GET" action="/registration">
+    <input type="submit" value="registration">
+  
+    </form>
+    </body>
+</html>

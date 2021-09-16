@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<div class="container mt-sm-5 my-1">
+    <form method="POST" action="/account/reviewNect">
+        <h3 > TOTAL:{{.ID}} /{{.t}}          </h3>
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+           
+            <div class="py-2 h5"><h3 ><span class="label label-warning" id="qid"> Question {{.ID}}: </span><b>{{.question}}</b></div>
+            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                <ul>
+                    <li>
+                        <input type="checkbox"id="f-option" name="A" disabled="disabled"value={{.A}} {{if .checkA}} checked {{end}}>
+                        <label for="f-option" class="element-animation">{{.A}}</label>
+                        <div class="check"></div>
+                    </li>
+                    <li>
+                        <input type="checkbox"id="s-option" name="B" disabled="disabled" value={{.B}} {{if .checkB}} checked {{end}}>
+                        <label for="s-option" class="element-animation">{{.B}}</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="k-option"name="C"  disabled="disabled"value={{.C}} {{if .checkC}} checked {{end}}>
+                        <label for="t-option" class="element-animation">{{.C}}</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                    <li>
+                        <input type="checkbox"id="l-option" name="D"  disabled="disabled"value={{.D}} {{if .checkD}} checked {{end}}>
+                        <label for="k-option" class="element-animation">{{.D}}</label>
+                        <div class="check"><div class="inside"></div></div>
+                        <div class="d-flex align-items-center pt-3">
+                            <div class="ml-auto mr-sm-5">
+                                <button type="submit" name="isNext" value="0" class="btn btn-primary">Previous</button>
+                            </div>
+                            <div><input type="hidden" name="id" value="{{.ID}}"/></div>
+                            <div class="ml-auto mr-sm-5">
+                                <button type="submit" name="isNext" value="1" class="btn btn-success">Next</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {{.err}}
+    </form>
+    <br><br>
+    <form method="POST" action="/account/review">
+        <button type="submit" class="btn btn-success">Finish</button>
+    </form>
+</div>
+</body>
+</html>
